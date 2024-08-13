@@ -1,19 +1,52 @@
-import requests
+import argparse
 import requests
 from bs4 import BeautifulSoup
-import json
+import pytz
+from datetime import datetime
 
-#Discord webhook URL
-webhook_url = ''
+#initialize the parser
+parser = argparse.ArgumentParser(description='Process course information.')
 
-semester = '202408'
-subject = 'PHY'
-course_num = '2049'
+#required arguments
+parser.add_argument('-webhook', required=True, help='Your discord webhook')
+parser.add_argument('-semester', required=True, help='The semester identifier (e.g., 202408)')
+parser.add_argument('-subject', required=True, help='The subject code (e.g., ECO)')
+parser.add_argument('-course_num', required=True, help='The course number (e.g., 3203)')
 
-valid_CRNs = ''
+#optional arguments
+parser.add_argument('-campus', help='The campus name (e.g., Tampa)', default=None)
+parser.add_argument('-allow_online', choices=['T', 'F'], help='Allow online courses (T/F)', default=None)
+parser.add_argument('-require_online', choices=['T', 'F'], help='Require online courses (T/F)', default=None)
 
-# requests data from url with headers
-# returns the data in json format
+#optional argument for multiple sections
+parser.add_argument('-crn', nargs='*', help='List of crns to search for (e.g., 91412 91413 91414)', default=[])
+
+# Parse the arguments
+args = parser.parse_args()
+
+webhook_url = args.webhook
+semester = args.semester
+subject = args.subject
+course_num = args.course_num
+campus = args.campus
+allow_online = args.allow_online
+require_online = args.require_online
+selected_crns = args.crn
+
+print(f"Webhook: {webhook_url}")
+print(f"Semester: {semester}")
+print(f"CRNs: {subject}")
+print(f"Course Number: {course_num}")
+if campus:
+    print(f"Campus: {campus}")
+if allow_online:
+    print(f"Allow Online: {allow_online}")
+if require_online:
+    print(f"Require Online: {require_online}")
+if selected_crns:
+    print(f"Sections: {', '.join(selected_crns)}")
+
+
 def requestData(P_SEMESTER, P_SUBJ, P_NUM):
 
     url = "http://usfweb.usf.edu/DSS/StaffScheduleSearch/StaffSearch/Results"
@@ -90,40 +123,97 @@ def requestData(P_SEMESTER, P_SUBJ, P_NUM):
         row_data["sections"].append(sections)
     return row_data
 
-
-'''
-with open(semester +'_'+ subject +'_'+ course_num + '.json', 'w') as f:
-    json.dump(requestData(semester, subject, course_num), f)
-'''
-
 #try/catch loop to catch http errors gracefully
 try:
     response = requestData(semester, subject, course_num)
-    tampa_sections = [section for section in response['sections'] if section['CAMPUS'] == "Tampa"]
 except (requests.exceptions.RequestException, KeyError) as e:
     tampa_sections = []
-    print(f"An error occurred: {e}")
+    print(f"A Staff Search error occurred: {e}")
     exit()
+    
+returned_sections = [section for section in response['sections']]
+ok_sections = []
+#print(returned_sections)
 
-for section in tampa_sections:
+#iterate through sections available for course
+for section in returned_sections:
+    #check there are seats open
     try: 
-        if(int(section['SEATS_REMAIN']) > 0):
-            valid_CRNs = valid_CRNs + ' ' + section['CRN']
-            pass
+        if not (int(section['SEATS_REMAIN']) > 0):
+            #print(str(section) + str(section['SEATS_REMAIN']))
+            continue
     #catch error if value is not an int
     except ValueError:
-        pass
+        print("Value error detected! Please message the creator of this script with the course you attempted to search!")
+        continue
     
-
-# create message for discord webhook
-if valid_CRNs == '':
-    print("No courses found")
+    #check if sections selected are available
+    if selected_crns:
+        if section['CRN'] in selected_crns:
+            ok_sections.append(section)
+            continue
+        else:
+            continue
+    
+    #check if online classes allowed
+    if allow_online:
+        if allow_online == 'T':
+            if section['DAYS'] == 'ONLINE':
+                ok_sections.append(section)
+                continue
+        elif section['DAYS'] == 'ONLINE':
+            continue
+    
+    #check if online classes required
+    if require_online:
+        if require_online == 'T':
+            if section['DAYS'] == 'ONLINE':
+                ok_sections.append(section)
+                continue
+            else:
+                continue
+    
+    #check for campus
+    if campus:
+        if section['CAMPUS'] == campus:
+            ok_sections.append(section)
+            continue
+        else:
+            continue
+        
+    #default case for courses not filtered out
+    ok_sections.append(section)
+    
+#check if no seats found
+if ok_sections == []:
+    print("No seats found")
     exit()
-data = {
-    "content": "Sections found in Tampa:" + valid_CRNs,
-    "username": semester +'_'+ subject +'_'+ course_num  # Optional: Set the name of the bot
-}
 
+
+#create discord message string
+course_info = 'Semester: ' + semester + '\nSubject: ' + subject + '\nCourse Number: ' + course_num + '\nCurrent Time: '+ datetime.now(pytz.timezone('US/Eastern')).strftime('%Y-%m-%d %H:%M:%S %Z%z')
+sections_found = ''
+for section in ok_sections:
+    sections_found = sections_found + 'CRN: ' + section['CRN'] + '\n'
+    sections_found = sections_found + 'Seats Available: ' + section['SEATS_REMAIN'] + '\n'
+    sections_found = sections_found + 'Section Number: ' + section['SEC'] + '\n'
+    sections_found = sections_found + 'Professor: ' + section['INSTRUCTOR'] + '\n'
+    sections_found = sections_found + 'Campus: ' + section['CAMPUS'] + '\n'
+    if section['DAYS'] == 'ONLINE':
+        sections_found = sections_found + 'Online: True\n\n'
+    else: 
+        sections_found = sections_found + 'Online: False\n\n'
+
+discord_message = "Open sections found!\n" + course_info + '\n\n' + sections_found
+
+#discord max message limit is 2000 characters, if the message is larger than 2000 characters a message will be displayed and the string length will be reduced
+if len(discord_message) > 2000:
+    discord_message = discord_message[:1900] + '...\nMore sections found! Consider narrowing down your search.'
+
+data = {
+    "content": discord_message,
+    "username": "usf course seat finder bot"
+}
 try:
     response = requests.post(webhook_url, json=data)
     if response.status_code == 204:
@@ -132,6 +222,13 @@ try:
         print(f"Failed to send message: {response.status_code}")
     pass
 except (requests.exceptions.RequestException, KeyError) as e:
-    print(f"An error occurred: {e}")
+    print(f"A Discord error occurred: {e}")
     pass
-    
+
+
+
+exit()
+for sec in ok_sections:
+    print(sec)
+    print()
+    print()
