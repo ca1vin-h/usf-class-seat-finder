@@ -61,14 +61,12 @@ This command checks for available seats in the course ECO 3203 for the Fall 2024
 
 ## Example Output
 
-### Open Sections Found!
+Open Sections Found!
 
 **Semester:** 202408  
 **Subject:** ENC  
 **Course Number:** 1101  
 **Current Time:** 2024-08-13 19:27:49 EDT-0400
-
-#### Available Sections
 
 - **CRN:** 89191  
   **Seats Available:** 20  
