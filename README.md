@@ -31,17 +31,17 @@ The script requires several arguments to run. These arguments allow you to speci
 
 ### Required Arguments
 
--   **`-webhook`** (str): Your Discord webhook URL where notifications will be sent.
--   **`-semester`** (str): The semester identifier (e.g., `202408` for Fall 2024).
--   **`-subject`** (str): The subject code (e.g., `ECO`).
--   **`-course_num`** (str): The course number (e.g., `3203`).
+-   **`-webhook`** (str): Your Discord webhook URL. This URL is used to send notifications when seats are available.
+-   **`-semester`** (str): The semester identifier (e.g., `202408`). The format should be YYYYMM.
+-   **`-subject`** (str): The subject code (e.g., `ECO`). This represents the department of the course.
+-   **`-course_num`** (str): The course number (e.g., `3203`). This identifies the specific course.
 
 ### Optional Arguments
 
--   **`-campus`** (str): The campus name (e.g., `Tampa`). Default is `None`.
--   **`-allow_online`** (str): Whether to allow online courses (`T` for True, `F` for False). Default is `None`.
--   **`-require_online`** (str): Whether to require the course to be online (`T` for True, `F` for False). Default is `None`.
--   **`-crn`** (list of str): A list of CRNs (Course Reference Numbers) to search for specific sections (e.g., `91412 91413 91414`). Default is an empty list.
+-   **`-campus`** (str): The campus name (e.g., `Tampa`). If provided, the search will be restricted to this campus. Default is `None`.
+-   **`-allow_online`** (str): Allow online courses (`T` or `F`). If set to `T`, online courses will be included in the search results. If `F`, online courses will be excluded. Default is `None`.
+-   **`-require_online`** (str): Require online courses (`T` or `F`). If set to `T`, only online courses will be included. Default is `None`.
+-   **`-crn`** (list of str): List of CRNs to search for (e.g., `91412 91413 91414`). If specified, the script will check availability for these specific CRNs. Default is an empty list.
 
 ## Examples
 
