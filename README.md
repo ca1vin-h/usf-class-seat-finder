@@ -58,9 +58,6 @@ Search for Specific CRNs:
 
 `python class_seat_finder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203 -crn 91412 91413`
 
-Advanced Search: 
-
-`python usf_seat_finder.py -webhook "https://discord.com/api/webhooks/..." -semester "202408" -subject "ECO" -course_num "3203" -campus "Tampa" -allow_online "T" -require_online "F" -crn 91412 91413` 
 
 ## Notes
 
