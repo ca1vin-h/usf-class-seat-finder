@@ -27,7 +27,7 @@ You can install the required packages using pip:
 
 The script requires several arguments to run. These arguments allow you to specify the course information and the notification webhook.
 
-`python class_seat_finder.py -webhook <webhook_url> -semester <semester_id> -subject <subject_code> -course_num <course_number> [-campus <campus_name>] [-allow_online <T/F>] [-require_online <T/F>] [-crn <crn_list>]`
+`python classFinder.py -webhook <webhook_url> -semester <semester_id> -subject <subject_code> -course_num <course_number> [-campus <campus_name>] [-allow_online <T/F>] [-require_online <T/F>] [-crn <crn_list>]`
 
 ### Required Arguments
 
@@ -47,19 +47,19 @@ The script requires several arguments to run. These arguments allow you to speci
 
 ### Basic Search:
 
-`python class_seat_finder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203`
+`python classFinder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203`
 
 ### Search with Campus Requirement, Allowing Online Courses:
 
-`python class_seat_finder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203 -campus Tampa -allow_online T`
+`python classFinder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203 -campus Tampa -allow_online T`
 
 ### Search with Online Requirement:
 
-`python class_seat_finder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203 -require_online T`
+`python classFinder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203 -require_online T`
 
 ### Search for Specific CRNs:
 
-`python class_seat_finder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203 -crn 91412 91413`
+`python classFinder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203 -crn 91412 91413`
 
 ## Example Output
 
