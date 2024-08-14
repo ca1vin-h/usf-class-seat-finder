@@ -41,14 +41,29 @@ The script requires several arguments to run. These arguments allow you to speci
 -   **`-require_online`**: Whether to require the course to be online (`T` for True, `F` for False). Default is `None`.
 -   **`-crn`**: A list of CRNs (Course Reference Numbers) to search for specific sections (e.g., `91412 91413 91414`). Default is an empty list.
 
-### Example Command
+### Examples
 
-
-`python usf_seat_finder.py -webhook "https://discord.com/api/webhooks/..." -semester "202408" -subject "ECO" -course_num "3203" -campus "Tampa" -allow_online "T" -require_online "F" -crn 91412 91413` 
 
 This command checks for available seats in the course ECO 3203 for the Fall 2024 semester on the Tampa campus. It allows online courses but does not require them. It also checks specific sections with the provided CRNs.
+
+Basic Search:
+
+`python class_seat_finder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203`
+
+Search with Campus and Online Requirement:
+
+`python class_seat_finder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203 -campus Tampa -require_online T`
+
+Search for Specific CRNs:
+
+`python class_seat_finder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203 -crn 91412 91413`
+
+Advanced Search: 
+
+`python usf_seat_finder.py -webhook "https://discord.com/api/webhooks/..." -semester "202408" -subject "ECO" -course_num "3203" -campus "Tampa" -allow_online "T" -require_online "F" -crn 91412 91413` 
 
 ## Notes
 
 -   The script is designed to be run periodically (e.g., using a cron job) to continually check for seat availability.
--   Ensure that the webhook URL is correctly configured to receive notifications.
+-   Ensure you replace <webhook_url> with your actual Discord webhook URL.
+-   The semester identifier must be in the format YYYYMM.
