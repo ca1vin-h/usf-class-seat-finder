@@ -49,9 +49,13 @@ The script requires several arguments to run. These arguments allow you to speci
 
 `python class_seat_finder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203`
 
-### Search with Campus and Online Requirement:
+### Search with Campus Requirement, Allowing Online Courses:
 
-`python class_seat_finder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203 -campus Tampa -require_online T`
+`python class_seat_finder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203 -campus Tampa -allow_online T`
+
+### Search with Online Requirement:
+
+`python class_seat_finder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203 -require_online T`
 
 ### Search for Specific CRNs:
 
