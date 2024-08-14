@@ -78,34 +78,6 @@ Search for Specific CRNs:
   **Campus:** Off-campus - Tampa  
   **Online:** True
 
-- **CRN:** 89192  
-  **Seats Available:** 20  
-  **Section Number:** 710  
-  **Professor:** Staff  
-  **Campus:** Off-campus - Tampa  
-  **Online:** True
-
-- **CRN:** 89193  
-  **Seats Available:** 20  
-  **Section Number:** 711  
-  **Professor:** Staff  
-  **Campus:** Off-campus - Tampa  
-  **Online:** True
-
-- **CRN:** 89194  
-  **Seats Available:** 20  
-  **Section Number:** 712  
-  **Professor:** Staff  
-  **Campus:** Off-campus - Tampa  
-  **Online:** True
-
-- **CRN:** 91968  
-  **Seats Available:** 20  
-  **Section Number:** 525  
-  **Professor:** Staff  
-  **Campus:** Off-campus - Sarasota-Manatee  
-  **Online:** True
-
 - **CRN:** 91743  
   **Seats Available:** 1  
   **Section Number:** 521  
@@ -113,77 +85,6 @@ Search for Specific CRNs:
   **Campus:** Sarasota-Manatee  
   **Online:** False
 
-- **CRN:** 89238  
-  **Seats Available:** 1  
-  **Section Number:** 009  
-  **Professor:** Nicholas Giordano Guilfoile  
-  **Campus:** Tampa  
-  **Online:** False
-
-- **CRN:** 89251  
-  **Seats Available:** 1  
-  **Section Number:** 020  
-  **Professor:** Katrina Lynn Sandefer  
-  **Campus:** Tampa  
-  **Online:** False
-
-- **CRN:** 93100  
-  **Seats Available:** 1  
-  **Section Number:** 047  
-  **Professor:** Olajide Abdulrahman Omojarabi  
-  **Campus:** Tampa  
-  **Online:** False
-
-- **CRN:** 89288  
-  **Seats Available:** 19  
-  **Section Number:** 053  
-  **Professor:** Staff  
-  **Campus:** Tampa  
-  **Online:** False
-
-- **CRN:** 89293  
-  **Seats Available:** 1  
-  **Section Number:** 057  
-  **Professor:** Elizabeth Pottinger  
-  **Campus:** Tampa  
-  **Online:** False
-
-- **CRN:** 89294  
-  **Seats Available:** 18  
-  **Section Number:** 058  
-  **Professor:** Staff  
-  **Campus:** Tampa  
-  **Online:** False
-
-- **CRN:** 89296  
-  **Seats Available:** 5  
-  **Section Number:** 060  
-  **Professor:** Estrella Garcia-Calvo  
-  **Campus:** Tampa  
-  **Online:** False
-
-- **CRN:** 89304  
-  **Seats Available:** 1  
-  **Section Number:** 066  
-  **Professor:** Isabella Susan Rabadi  
-  **Campus:** Tampa  
-  **Online:** False
-
-- **CRN:** 89307  
-  **Seats Available:** 2  
-  **Section Number:** 069  
-  **Professor:** William Hal Walker  
-  **Campus:** Tampa  
-  **Online:** False
-
-- **CRN:** 89308  
-  **Seats Available:** 4  
-  **Section Number:** 070  
-  **Professor:** Anthony Joseph Borruso  
-  **Campus:** Tampa  
-  **Online:** False
-
-**More sections found! Consider narrowing down your search.**
 
 ## Notes
 
