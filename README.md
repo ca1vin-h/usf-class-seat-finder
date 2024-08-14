@@ -47,15 +47,15 @@ The script requires several arguments to run. These arguments allow you to speci
 
 This command checks for available seats in the course ECO 3203 for the Fall 2024 semester on the Tampa campus. It allows online courses but does not require them. It also checks specific sections with the provided CRNs.
 
-Basic Search:
+###Basic Search:
 
 `python class_seat_finder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203`
 
-Search with Campus and Online Requirement:
+###Search with Campus and Online Requirement:
 
 `python class_seat_finder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203 -campus Tampa -require_online T`
 
-Search for Specific CRNs:
+###Search for Specific CRNs:
 
 `python class_seat_finder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203 -crn 91412 91413`
 
