@@ -32,7 +32,7 @@ The script requires several arguments to run. These arguments allow you to speci
 ### Required Arguments
 
 -   **`-webhook`** (str): Your Discord webhook URL. This URL is used to send notifications when seats are available.
--   **`-semester`** (str): The semester identifier (e.g., `202408`). The format should be YYYYMM.
+-   **`-semester`** (str): The semester identifier (e.g., `202408` for Fall 2024). The format should be YYYYMM.
 -   **`-subject`** (str): The subject code (e.g., `ECO`). This represents the department of the course.
 -   **`-course_num`** (str): The course number (e.g., `3203`). This identifies the specific course.
 
