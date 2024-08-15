@@ -38,12 +38,18 @@ The script requires several arguments to run. These arguments allow you to speci
 
 ### Optional Arguments
 
+-   **`-test`** (bool): Run the script in test mode. When this flag is present, the script will include all sections, even if they are full. This is useful for verifying that the script is checking the correct sections and the discord webhook is correct.
 -   **`-campus`** (str): The campus name (e.g., `Tampa`). If provided, the search will be restricted to this campus. Default is `None`.
 -   **`-allow_online`** (str): Allow online courses (`T` or `F`). If set to `T`, online courses will be included in the search results. If `F`, online courses will be excluded. Default is `None`.
 -   **`-require_online`** (str): Require online courses (`T` or `F`). If set to `T`, only online courses will be included. Default is `None`.
 -   **`-crn`** (list of str): List of CRNs to search for (e.g., `91412 91413 91414`). If specified, the script will check availability for these specific CRNs. Default is an empty list.
 
 ## Examples
+
+
+### Test Mode: 
+
+`python classFinder.py -webhook https://discord.com/api/webhooks/your_webhook -semester 202408 -subject ECO -course_num 3203 -test`
 
 ### Basic Search:
 
