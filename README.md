@@ -90,6 +90,7 @@ Open Sections Found!
   **Campus:** Sarasota-Manatee  
   **Online:** False
 
+...
 
 ## Notes
 
