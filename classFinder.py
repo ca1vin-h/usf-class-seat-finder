@@ -17,6 +17,7 @@ parser.add_argument('-course_num', required=True, help='The course number (e.g.,
 parser.add_argument('-campus', help='The campus name (e.g., Tampa)', default=None)
 parser.add_argument('-allow_online', choices=['T', 'F'], help='Allow online courses (T/F)', default=None)
 parser.add_argument('-require_online', choices=['T', 'F'], help='Require online courses (T/F)', default=None)
+parser.add_argument('-test', action='store_true', help='Run in test mode')
 
 #optional argument for multiple sections
 parser.add_argument('-crn', nargs='*', help='List of crns to search for (e.g., 91412 91413 91414)', default=[])
@@ -32,6 +33,7 @@ campus = args.campus
 allow_online = args.allow_online
 require_online = args.require_online
 selected_crns = args.crn
+test_mode = args.test
 
 print(f"Webhook: {webhook_url}")
 print(f"Semester: {semester}")
@@ -45,6 +47,7 @@ if require_online:
     print(f"Require Online: {require_online}")
 if selected_crns:
     print(f"Sections: {', '.join(selected_crns)}")
+print(f"Test Mode: {args.test}")
 
 
 def requestData(P_SEMESTER, P_SUBJ, P_NUM):
@@ -138,14 +141,15 @@ ok_sections = []
 #iterate through sections available for course
 for section in returned_sections:
     #check there are seats open
-    try: 
-        if not (int(section['SEATS_REMAIN']) > 0):
-            #print(str(section) + str(section['SEATS_REMAIN']))
+    if not test_mode:
+        try: 
+            if not (int(section['SEATS_REMAIN']) > 0):
+                #print(str(section) + str(section['SEATS_REMAIN']))
+                continue
+        #catch error if value is not an int
+        except ValueError:
+            print("Value error detected! Please message the creator of this script with the course you attempted to search!")
             continue
-    #catch error if value is not an int
-    except ValueError:
-        print("Value error detected! Please message the creator of this script with the course you attempted to search!")
-        continue
     
     #check if sections selected are available
     if selected_crns:
@@ -204,7 +208,10 @@ for section in ok_sections:
     else: 
         sections_found = sections_found + 'Online: False\n\n'
 
-discord_message = "Open sections found!\n" + course_info + '\n\n' + sections_found
+if not test_mode:
+    discord_message = "Open sections found!\n" + course_info + '\n\n' + sections_found
+else:
+    discord_message = "Testing the script!\n" + course_info + '\n\n' + sections_found
 
 #discord max message limit is 2000 characters, if the message is larger than 2000 characters a message will be displayed and the string length will be reduced
 if len(discord_message) > 2000:
