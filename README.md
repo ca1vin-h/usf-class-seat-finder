@@ -27,7 +27,7 @@ You can install the required packages using pip:
 
 The script requires several arguments to run. These arguments allow you to specify the course information and the notification webhook.
 
-`python classFinder.py -webhook <webhook_url> -semester <semester_id> -subject <subject_code> -course_num <course_number> [-campus <campus_name>] [-allow_online <T/F>] [-require_online <T/F>] [-crn <crn_list>]`
+`python classFinder.py -webhook <webhook_url> -semester <semester_id> -subject <subject_code> -course_num <course_number> [-campus <campus_name>] [-allow_online <T/F>] [-require_online <T/F>] [-crn <crn_list>] [-test]`
 
 ### Required Arguments
 
