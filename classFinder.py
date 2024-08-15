@@ -2,7 +2,7 @@ import argparse
 import requests
 from bs4 import BeautifulSoup
 import pytz
-from datetime import datetime
+from datetime import datetime 
 
 #initialize the parser
 parser = argparse.ArgumentParser(description='Process course information.')
