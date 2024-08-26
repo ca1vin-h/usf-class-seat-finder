@@ -195,7 +195,7 @@ if ok_sections == []:
 
 
 #create discord message string
-course_info = 'Semester: ' + semester + '\nSubject: ' + subject + '\nCourse Number: ' + course_num + '\nCurrent Time: '+ datetime.now(pytz.timezone('US/Eastern')).strftime('%Y-%m-%d %H:%M:%S %Z%z')
+course_info = 'Semester: ' + semester + '\nSubject: ' + subject + '\nCourse Number: ' + course_num + '\nCurrent Time: '+ datetime.now(pytz.timezone('America/New_York')).strftime('%Y-%m-%d %H:%M:%S %Z%z')
 sections_found = ''
 for section in ok_sections:
     sections_found = sections_found + 'CRN: ' + section['CRN'] + '\n'
