@@ -1,6 +1,7 @@
 
 # USF Class Seat Finder
 
+## Overview
 The USF Class Seat Finder script allows you to monitor the availability of seats for a specific course at the University of South Florida (USF). The script scrapes the USF Staff Schedule Search form and notifies you via a Discord webhook when a seat becomes available.
 
 ## Features
