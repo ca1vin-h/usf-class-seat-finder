@@ -45,6 +45,15 @@ The script requires several arguments to run. These arguments allow you to speci
 -   **`-require_online`** (str): Require online courses (`T` or `F`). If set to `T`, only online courses will be included. Default is `None`.
 -   **`-crn`** (list of str): List of CRNs to search for (e.g., `91412 91413 91414`). If specified, the script will check availability for these specific CRNs. Default is an empty list.
 
+## Semesters
+
+| Value   | Description  |
+|---------|--------------|
+| 202508  | Fall 2025    |
+| 202505  | Summer 2025  |
+| 202501  | Spring 2025  |
+
+
 ## Examples
 
 
