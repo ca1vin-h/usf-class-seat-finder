@@ -53,6 +53,14 @@ The script requires several arguments to run. These arguments allow you to speci
 | 202505  | Summer 2025  |
 | 202501  | Spring 2025  |
 
+## Campuses
+
+ - `Tampa`
+ - `St. Petersburg`
+ - `Sarasota-Manatee`
+ - `Lakeland`
+ - **Note: If you are registered at USF you can take couses at any campus. If you allow online courses in your search then *online* sections from all campuses will be included.**
+   
 
 ## Examples
 
