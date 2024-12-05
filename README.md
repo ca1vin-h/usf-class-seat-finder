@@ -49,9 +49,10 @@ The script requires several arguments to run. These arguments allow you to speci
 
 | Value   | Description  |
 |---------|--------------|
-| 202508  | Fall 2025    |
-| 202505  | Summer 2025  |
-| 202501  | Spring 2025  |
+| `202508`  | Fall 2025    |
+| `202505`  | Summer 2025  |
+| `202501`  | Spring 2025  |
+ - **Note: This repo will no longer be maintained after December 2024. Additional information on semesters can be found on my [Staff Search Documentation](https://github.com/ca1vin-h/USFClassSearchAPI/blob/eb33084637510a4eadb89f167d40fa9782255df1/SchedulePlanner2.ipynb).**
 
 ## Campuses
 
