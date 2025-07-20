@@ -49,9 +49,9 @@ The script requires several arguments to run. These arguments allow you to speci
 
 | Value   | Description  |
 |---------|--------------|
+| `202605`  | Summer 2026  |
+| `202601`  | Spring 2026  |
 | `202508`  | Fall 2025    |
-| `202505`  | Summer 2025  |
-| `202501`  | Spring 2025  |
 
 ## Campuses
 
